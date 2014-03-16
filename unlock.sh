@@ -58,7 +58,8 @@ getBluetooth()
         fi
 
         if [ -z "$result" ]; then
-            result=$(bin/btutil list | grep -Eo "($btlist)" | xargs -P 2 -n 1 bin/btutil connect | grep -Eo '^OK.')
+            ccc='bin/btutil list | grep -Eo '$btlist' | xargs -P 2 -n 1 bin/btutil connect | grep -Eo "^OK."'
+            result=`$ccc`
         fi
 
 		if [ -n "$result" ]; then
